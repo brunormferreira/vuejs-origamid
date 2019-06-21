@@ -10,20 +10,39 @@
 </head>
 
 <body>
-  
+  <div id="app">
+    <button @click="puxarAcoes">Puxar Ações</button>
+    {{acoes}}
+    <p>Page Number: {{acoes.page}}</p>
+    <p>Total Pages: {{acoes.total_pages}}</p>
+    <p>Total: {{acoes.total}}</p>
+  </div>
   <!--
   Utilizando a API
-  https://api.iextrading.com/1.0/stock/aapl/quote
+  https://reqres.in/api/users?per_page=7
 
   Crie um método que faça o fetch da resposta acima
   O método deve ser ativado ao clique no botão Ver Preço
 
   Coloque a resposta json do fetch em uma data e
-  mostre o valor de latestPrice, latestTime e o
-  companyName na interface.
+  mostre o valor do número e total de páginas.
   -->
   <script>
-    
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        acoes: {}
+      },
+      methods: {
+        puxarAcoes() {
+          fetch("https://reqres.in/api/users?per_page=7")
+            .then(response => response.json())
+            .then(json => {
+              this.acoes = json;
+            })
+        }
+      }
+    });
   </script>
 </body>
 
