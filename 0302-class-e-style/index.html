@@ -11,22 +11,32 @@
 
 <body>
   <div id="app">
-   
+    <button @click="{estaAtivo = !estaAtivo}">Change column</button>
+      <ul :class="{column: estaAtivo}" @click="changeColor">
+        <li :style="{background: bgColor}">Sobre</li>
+        <li :style="{background: bgColor}">Produtos</li>
+        <li :style="{background: bgColor}">Serviços</li>
+        <li :style="{background: bgColor}">Contato</li>
+      </ul>
   </div>
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        
+        estaAtivo: false,
+        bgColor: "#84e",
       },
       methods: {
-        
+        changeColor(){
+          const color = `hsl(${Math.random() * 360}, 100%, 50%)`
+          this.bgColor = color
+        }
       }
     });
   </script>
 
-  <!-- Crie um botão que troque a orientação da lista, ou seja,
+  <!-- 1) Crie um botão que troque a orientação da lista, ou seja,
   ao invés de 4 colunas, uma única coluna com 4 linhas.
 
   O botão será responsável por trocar para lista e também
@@ -35,13 +45,6 @@
 
   A classe column já está criada, basta utilizar ela.
   -->
-  
-  <ul>
-    <li>Sobre</li>
-    <li>Produtos</li>
-    <li>Serviços</li>
-    <li>Contato</li>
-  </ul>
   
   <style>
     ul {
@@ -66,7 +69,7 @@
     }
   </style>
   
-  <!-- Crie um gerador de cores, toda vez que o usuário clicar
+  <!-- 2) Crie um gerador de cores, toda vez que o usuário clicar
   em cima da lista, os itens trocam de cor.
   
   Gerador de cor:
