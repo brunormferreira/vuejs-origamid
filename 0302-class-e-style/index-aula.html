@@ -11,23 +11,49 @@
 
 <body>
   <div id="app">
-    <p :class="cor">Texto Azul</p>
-    <p :class="{ativo: estaAtivo}">Mostrar Texto</p>
+    <p :class="[cor, {ativo: estaAtivo}]">Texto Azul</p>
+    <p :class="{ativo: estaAtivo, verde: elementoVerde}">Mostrar Texto</p>
+    <button @click="estaAtivo = !estaAtivo">Click</button>
+
+    <a :style="{background: bgColor, fontSize: tamanho + 'px'}">Estilize Ele</a>
+    <button @click="tamanho++">Aumentar</button>
+
+    <p :style="estiloBotao">Novo texto</p>
+    <p :style="estiloParagrafo">Novo texto</p>
+    {{estiloParagrafo}}
   </div>
 
   <script>
     const vm = new Vue({
       el: "#app",
       data: {
-        cor: "azul",
+        cor: "verde",
+        background: "vermelho",
         estaAtivo: true,
+        elementoVerde: false,
+        bgColor: "blue",
+        tamanho: 20,
+        estiloBotao: {
+          background: "tomato",
+          color: "#fff",
+          fontSize: "20px"
+        }
       },
       computed: {
+        estiloParagrafo(){
+          const tamanho = Math.random() * 100;
+          return {
+            fontSize: tamanho + 'px',
+          }
+        }
       }
     });
   </script>
 
   <style>
+    .vermelho {
+      background: red;
+    }
     .azul {
       color: blue;
     }
