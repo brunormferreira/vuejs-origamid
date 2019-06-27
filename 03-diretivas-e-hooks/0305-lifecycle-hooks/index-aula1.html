@@ -12,14 +12,34 @@
 <body>
 
   <div id="app">
-   
+    <p>{{mensagem}}</p>
+    <div>{{github}}</div>
+    <button @click="puxarGithub">Push API</button>
   </div>
 
   <script>
     const vm = new Vue({
       el: "#app",
-      data: {},
-      methods: {},
+      data: {
+        mensagem: "Essa é uma mensagem",
+        github: {},
+      },
+      methods: {
+        puxarGithub(){
+          fetch('https://api.github.com/users/brunormferreira')
+          .then(r => r.json())
+          .then(r => {
+            this.github = r
+          });
+        }
+      },
+      beforeCreate(){
+        console.log("Antes da criação");
+      },
+      created(){
+        console.log("Foi criado");
+        this.puxarGithub();
+      }
     });
   </script>
 </body>
