@@ -35,10 +35,20 @@
       },
       beforeCreate(){
         console.log("Antes da criação");
+        console.log(this.mensagem);
       },
       created(){
-        console.log("Foi criado");
         this.puxarGithub();
+        console.log(this.mensagem);
+        console.log("Elemento", this.$el)
+      },
+      beforeMount() {
+        console.log("BeforeMount", this.mensagem)
+        console.log("Elemento", this.$el)
+
+      },
+      mounted() {
+        console.log("Elemento", this.$el)
       }
     });
   </script>
