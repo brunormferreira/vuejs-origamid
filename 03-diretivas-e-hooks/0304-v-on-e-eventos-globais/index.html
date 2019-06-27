@@ -12,15 +12,32 @@
 <body>
 
   <div id="app">
-    
+    <p style="position: fixed">{{totalScroll}}</p>
   </div>
 
   <script>
     const vm = new Vue({
       el: "#app",
-      data: {}
+      data: {
+        totalScroll: 0
+      },
+      methods: {
+        handleScroll() {
+          this.totalScroll = window.scrollY;
+          console.log(this.totalScroll);
+        }
+      },
+      created() {
+        window.addEventListener("scroll", this.handleScroll);
+      }
     });
   </script>
 
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+  
 </body>
 </html>
