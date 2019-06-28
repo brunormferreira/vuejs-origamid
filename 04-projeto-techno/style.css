@@ -23,7 +23,7 @@ body {
 /* LISTA PRODUTOS */
 
 .produtos {
-  max-width: 900px;;
+  max-width: 900px;
   margin: 100px auto 0 auto;
 }
 
@@ -53,7 +53,7 @@ body {
 /* MODAL */
 
 .modal::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0px;
   left: 0px;
@@ -83,7 +83,7 @@ body {
   padding: 50px 50px 50px 0;
 }
 
-.modal_img{
+.modal_img {
   grid-column: 1;
   box-shadow: 0px 3px 4px rgba(0,0,0,.1), 0px 4px 10px rgba(0,0,0,.2);
 }
@@ -103,8 +103,7 @@ body {
 }
 
 .modal_btn {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 80px;
   background: #000;
   cursor: pointer;
   color: #ffffff;
