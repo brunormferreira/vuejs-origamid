@@ -20,7 +20,7 @@ const vm = new Vue({
     carrinhoTotal() {
       let total = 0;
       if (this.carrinho.length) {
-        this.carrinho.forEach(() => {
+        this.carrinho.forEach(item => {
           total += item.preco;
         })
       }
